@@ -8,6 +8,6 @@ namespace WebApiUsuarios.Repository
         Task<Usuario> GetUsersById(int id, int idrol);
         Task<bool> InsertUsers(Usuario Usuario);
         Task<bool> UpdateUsers(Usuario Usuario);
-        Task<bool> DeleteUsers(int id);
+        Task<bool> DeleteUsers(int id, int idAdmin);
     }
 }

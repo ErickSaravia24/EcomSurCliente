@@ -69,6 +69,28 @@ namespace WebApiUsuarios.Controller
                 return new BadRequestObjectResult(new { error = ex.Message });
             }
         }
+        [HttpDelete("{user}")]
+        public async Task<ActionResult<bool>> DeleteUser(int id, int idAdmin)
+        {
+            try
+            {
+                bool result = await _userRepository.DeleteUsers(id, idAdmin);
+                if (result)
+                {
+                    return new OkObjectResult(result);
+                }
+                else
+                {
 
+                    return new NotFoundResult();
+                }   
+            }
+            catch (Exception ex)
+            {
+             return   new BadRequestObjectResult(new { error = ex.Message });
+            }
+        }
     }
+
 }
+

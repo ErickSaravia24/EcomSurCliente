@@ -176,7 +176,7 @@ namespace WebApiUsuarios.Repository
                 return false;
             }
         }
-        public async Task<bool> DeleteUsers(int id)
+        public async Task<bool> DeleteUsers(int id, int idAdmin)
         {
             try
             {
@@ -188,6 +188,7 @@ namespace WebApiUsuarios.Repository
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@userId", id);
+                        command.Parameters.AddWithValue("@adminUserId", idAdmin);
                         int rowsAffected = await command.ExecuteNonQueryAsync();
 
                         if (rowsAffected > 0)
@@ -207,5 +208,6 @@ namespace WebApiUsuarios.Repository
                 return false;
             }
         }
+
     }
 }
